@@ -27,10 +27,10 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
-  timeout :30 *100000,
+  timeout :30 *1000,
   
    expect: {
-    timeout : 1000000
+    timeout : 1000
    },
 
 
@@ -44,8 +44,9 @@ export default defineConfig({
     //trace: 'on-first-retry',
     trace : 'retain-on-failure',
     headless : false,
-    screenshot : 'on', 
-  
+    screenshot : 'only-on-failure', 
+    video: 'retain-on-failure',
+
   },
 
   /* Configure projects for major browsers */
@@ -55,10 +56,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-   /* {
+   {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
-    }, */
+    },
 
     /*{
       name: 'webkit',
