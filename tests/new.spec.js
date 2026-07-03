@@ -1,4 +1,5 @@
 const { test, expect } = require("@playwright/test");
+const dataset = JSON.parse(JSON.stringify(require("../utils/data.json")));
 
 test("this is my test case", async ({ page }) => {
   await page.goto("https://www.naukri.com/");
@@ -42,8 +43,21 @@ test("handle alert pop up", async ({ page }) => {
   await page.goto("https://mail.rediff.com/cgi-bin/login.cgi");
   //event registration for alert pop up is must before the action which trigger the alert pop up
 
-  page.on("dialog", dialog => dialog.accept());
+  page.on("dialog", (dialog) => dialog.accept());
   //page.on("dialog", dialog =>  dialog.dismiss());
 
   await page.locator("button.signin-btn").click();
 });
+
+for (const data of dataset) {
+  test.only(`Validate data driven testing ${data.UserName}`, async ({
+    page,
+  }) => {
+    await page.goto("https://www.saucedemo.com/");
+    await page.locator('[data-test="username"]').click();
+    await page.locator('[data-test="username"]').fill(data.UserName);
+    await page.locator('[data-test="password"]').click();
+    await page.locator('[data-test="password"]').fill(data.Password);
+    await page.locator('[data-test="login-button"]').click();
+  });
+}

@@ -8,7 +8,7 @@ test("Check drop down validation", async ({ page }) => {
   const dropDown = await page.locator("select.form-control");
   await dropDown.selectOption("consult");
   await page.locator(".radiotextsty").last().click();
-  expect(page.locator(".radiotextsty").last()).toBeChecked();
+  expect(page.locator(".radiotextsty").last()).toBechecked();
 });
 
 test("Child window validation", async ({ browser }) => {
