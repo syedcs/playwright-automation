@@ -1,5 +1,5 @@
 const { test, expect } = require("@playwright/test");
-const { threadId } = require("worker_threads");
+//const { threadId } = require("worker_threads");
 
 test("Check drop down validation", async ({ page }) => {
   // const userName=page.locator("#username");
@@ -17,10 +17,7 @@ test("Child window validation", async ({ browser }) => {
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   console.log(await page.title());
 
-  const [newPage] = await Promise.all([
-    context.waitForEvent("page"),
-    await page.locator(".blinkingText").nth(0).click(),
-  ]);
+  const [newPage] = await Promise.all([context.waitForEvent("page"), await page.locator(".blinkingText").nth(0).click()]);
 
   const text = await newPage.locator(".red").textContent();
   console.log(text);
@@ -38,16 +35,13 @@ test("only for practice test", async ({ browser }) => {
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   console.log(await page.title());
 
-  const [newPage] = await Promise.all([
-    context.waitForEvent("page"),
-    page.locator(".blinkingText").click(),
-  ]);
+  const [newPage] = await Promise.all([context.waitForEvent("page"), page.locator(".blinkingText").click()]);
 
-  const emailid = await newPage
-    .locator("a[href='mailto:mentor@rahulshettyacademy.com']")
-    .textContent();
+  const emailid = await newPage.locator("a[href='mailto:mentor@rahulshettyacademy.com']").textContent();
   console.log(emailid);
   page.locator("#username").fill(emailid);
 
   await page.pause();
 });
+
+

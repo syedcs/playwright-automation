@@ -17,9 +17,7 @@ test("First playwright test", async ({ page }) => {
   await password.fill("Test@123");
   await signin.click();
   console.log(await page.locator("[style*='block']").textContent());
-  expect(page.locator("[style*='block']")).toContainText(
-    "Incorrect username/password.",
-  );
+  expect(page.locator("[style*='block']")).toContainText("Incorrect username/password.");
 
   await userName.fill("");
   await userName.fill("rahulshettyacademy");
@@ -55,12 +53,7 @@ test("Get title of the iphone", async ({ page }) => {
   await page.locator("#login").click();
 
   await page.waitForLoadState("networkidle");
-  const textFirstEelemnt1 = await page
-    .locator(".card-body b")
-    .allTextContents();
-  const textFirstEelemnt2 = await page
-    .locator(".card-body b")
-    .nth(0)
-    .textContent();
+  const textFirstEelemnt1 = await page.locator(".card-body b").allTextContents();
+  const textFirstEelemnt2 = await page.locator(".card-body b").nth(0).textContent();
   console.log(textFirstEelemnt1);
 });
