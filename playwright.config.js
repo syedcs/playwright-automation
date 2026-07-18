@@ -1,6 +1,6 @@
 // @ts-check
-import { chromium, defineConfig, devices } from '@playwright/test';
-import { on } from 'events';
+import { chromium, defineConfig, devices } from "@playwright/test";
+import { on } from "events";
 
 /**
  * Read environment variables from file.
@@ -14,7 +14,7 @@ import { on } from 'events';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -24,42 +24,38 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: "html",
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 
-  timeout :30 *1000,
-  
-   expect: {
-    timeout : 1000
-   },
+  timeout: 30 * 1000,
 
-
+  expect: {
+    timeout: 1000,
+  },
 
   use: {
-    
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     //trace: 'on-first-retry',
-    trace : 'retain-on-failure',
-    headless : false,
-    screenshot : 'only-on-failure', 
-    video: 'retain-on-failure',
-
+    trace: "retain-on-failure",
+    headless: false,
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
 
-  /* {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },*/
+   /* {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
+    }, */
 
     /*{
       name: 'webkit',
@@ -94,4 +90,3 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
