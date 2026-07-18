@@ -14,7 +14,7 @@ test("this is my test case", async ({ page }) => {
   await page.getByRole("textbox", { name: "Enter your active Email ID / Username" }).clear();
 });
 
-test.only("Simple GET API test", async ({ request }) => {
+test("Simple GET API test", async ({ request }) => {
   // Make a GET request to a sample API
   const response = await request.get("https://jsonplaceholder.typicode.com/posts/1");
 

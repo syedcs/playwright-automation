@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 // Validate reading text from a text element
 
-test.only("validate text from text webelement or a placeholder text", async ({ page }) => {
+test("validate text from text webelement or a placeholder text", async ({ page }) => {
   // Get the hidden placeholder text from the input field
   await page.goto("https://accounts.zoho.in/signin?servicename=ZohoHome&signupurl=https://www.zoho.com/signup.html");
 
