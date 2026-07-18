@@ -8,7 +8,7 @@ test("Check drop down validation", async ({ page }) => {
   const dropDown = await page.locator("select.form-control");
   await dropDown.selectOption("consult");
   await page.locator(".radiotextsty").last().click();
-  expect(page.locator(".radiotextsty").last()).toBechecked();
+  await expect(page.locator(".radiotextsty").last()).toBeChecked();
 });
 
 test("Child window validation", async ({ browser }) => {
@@ -17,7 +17,7 @@ test("Child window validation", async ({ browser }) => {
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   console.log(await page.title());
 
-  const [newPage] = await Promise.all([context.waitForEvent("page"), await page.locator(".blinkingText").nth(0).click()]);
+  const [newPage] = await Promise.all([context.waitForEvent("page"), page.locator(".blinkingText").nth(0).click()]);
 
   const text = await newPage.locator(".red").textContent();
   console.log(text);
@@ -35,13 +35,11 @@ test("only for practice test", async ({ browser }) => {
   await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
   console.log(await page.title());
 
-  const [newPage] = await Promise.all([context.waitForEvent("page"), page.locator(".blinkingText").click()]);
+  const [newPage] = await Promise.all([context.waitForEvent("page"), page.locator(".blinkingText").first().click()]);
 
   const emailid = await newPage.locator("a[href='mailto:mentor@rahulshettyacademy.com']").textContent();
   console.log(emailid);
-  page.locator("#username").fill(emailid);
+  await page.locator("#username").fill(emailid);
 
   await page.pause();
 });
-
-

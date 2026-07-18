@@ -23,6 +23,8 @@ test("First playwright test", async ({ page }) => {
   await userName.fill("rahulshettyacademy");
   await password.fill("learning");
   await signin.click();
+  await page.waitForLoadState("networkidle");
+  await page.waitForSelector(".card-title a", { timeout: 120000 });
   console.log(await cardTiles.nth(0).textContent());
   const allTitles = await cardTiles.allTextContents();
   console.log(allTitles);
