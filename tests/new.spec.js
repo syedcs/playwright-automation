@@ -5,7 +5,8 @@ test("this is my test case", async ({ page }) => {
   await page.goto("https://www.naukri.com/");
   // Jobseeker Login may not always be present or may render differently; try click with a short timeout and continue if absent
   try {
-    await page.getByTitle("Jobseeker Login").click({ timeout: 10000 });
+    await page.getByTitle("Jobseeker Login");
+    await page.getByTitle("Jobseeker Login").click();
   } catch (e) {
     // proceed even if the specific title isn't available
   }
@@ -16,7 +17,7 @@ test("this is my test case", async ({ page }) => {
   const text = await page.getByRole("link", { name: "Register for free" }).textContent();
   console.log(text);
 
-  await page.getByRole("textbox", { name: "Enter your active Email ID / Username" }).fill("");
+  await page.getByRole("textbox", { name: "Enter your active Email ID / Username" }).fill("Syedcs36@gmail.com");
 });
 
 test("Simple GET API test", async ({ request }) => {

@@ -12,7 +12,6 @@ test("Validate broken link ", async ({ page, request }) => {
     const response = await request.get(newhref);
     console.log(response);
 
-    //commenting for gitHub action
-    // expect.soft(response.status(),`link is broken ${newhref}`).toBeLessThan(400)
+    expect.soft(response.status(), `link is broken ${newhref}`).toBeLessThan(400);
   }
 });

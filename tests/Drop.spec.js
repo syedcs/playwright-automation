@@ -8,3 +8,10 @@ test("this my 2nd program", async ({ page }) => {
   await page.waitForLoadState("networkidle");
 });
 
+
+test.skip("Visual testing google.com", async ({page})=>{
+
+  await page.goto("https://www.google.com/")
+  await expect(page).toHaveScreenshot("google.png")
+
+})

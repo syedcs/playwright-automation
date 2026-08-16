@@ -23,7 +23,7 @@ test("Log out test", { tag: "@sanity" }, async ({ page }) => {
   await page.locator('[data-test="logout-sidebar-link"]').click();
 });
 
-test("Validate seelct option drop down", async ({ page }) => {
+test("Validate seelct option drop down @smoke", async ({ page }) => {
   await page.locator(".product_sort_container").selectOption("hilo");
   await page.locator("#add-to-cart-sauce-labs-fleece-jacket:visible").click();
 });
